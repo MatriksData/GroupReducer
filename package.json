@@ -1,0 +1,25 @@
+{
+  "name": "groupreducer",
+  "version": "0.2.0",
+  "description": "Javascript group reducer for streams as well as arraysz",
+  "main": "GroupReducer.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatriksData/GroupReducer.git"
+  },
+  "keywords": [
+    "grouping",
+    "reduce",
+    "stream",
+    "array"
+  ],
+  "author": "matriks developers",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/MatriksData/GroupReducer/issues"
+  },
+  "homepage": "https://github.com/MatriksData/GroupReducer#readme"
+}
