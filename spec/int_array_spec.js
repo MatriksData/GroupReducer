@@ -2,14 +2,12 @@ const GroupReducer = require('../GroupReducer');
 
 describe('', () => {
     it('', () => {
-        let reducer = new GroupReducer(
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let reducer = arr.groupReduce(
             (p, v) => p.concat(v),
             (v) => v % 2 === 0 ? 'even' : 'odd',
             () => []
         );
-        for (let i = 1; i <= 10; i += 1) {
-            reducer.add(i);
-        }
         const groups = reducer.groups();
         expect(groups).toBeDefined();
         expect(Object.keys(groups).length).toBe(2);
@@ -18,4 +16,4 @@ describe('', () => {
         expect(groups.even).toEqual([2,4,6,8,10]);
         expect(groups.odd).toEqual([1,3,5,7,9]);
     })
-})
+});

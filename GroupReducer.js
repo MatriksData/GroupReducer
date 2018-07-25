@@ -3,9 +3,9 @@ Function.prototype.method = function(name, func) {
     return this;
 }
 
-function GroupReducer(add_fn, group_fn, init_fn) {
+function GroupReducer(reduce_fn, group_fn, init_fn) {
     this.container = new Map();
-    this.add_fn = add_fn;
+    this.reduce_fn = reduce_fn;
     this.init_fn = init_fn;
     this.group_fn = group_fn;
 }
@@ -13,7 +13,7 @@ function GroupReducer(add_fn, group_fn, init_fn) {
 GroupReducer.method('add', function (v) {
     let k = this.group_fn(v);
     let p = this.container.has(k) ? this.container.get(k) : this.init_fn(v);
-    this.container.set(k, this.add_fn(p, v));
+    this.container.set(k, this.reduce_fn(p, v));
 });
 
 GroupReducer.method('push', function(v) {
@@ -38,6 +38,12 @@ GroupReducer.method('groups', function() {
         g[k] = this.container.get(k);
     }
     return g;
-})
+});
+
+Array.prototype.groupReduce = function(reduce_fn, group_fn, init_fn) {
+    let reducer = new GroupReducer(reduce_fn, group_fn, init_fn);
+    this.forEach(v => reducer.push(v));
+    return reducer;
+}
 
 module.exports = GroupReducer;

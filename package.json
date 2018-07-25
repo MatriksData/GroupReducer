@@ -1,7 +1,7 @@
 {
   "name": "groupreducer",
   "version": "0.2.0",
-  "description": "Javascript group reducer for streams as well as arraysz",
+  "description": "Javascript group reducer for streams as well as arrays",
   "main": "GroupReducer.js",
   "scripts": {
     "test": "jasmine"
