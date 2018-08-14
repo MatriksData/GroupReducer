@@ -17,5 +17,5 @@ describe('', () => {
         expect(groups.even.length).toBe(5);
         expect(groups.even).toEqual([2,4,6,8,10]);
         expect(groups.odd).toEqual([1,3,5,7,9]);
-    })
-})
+    });
+});

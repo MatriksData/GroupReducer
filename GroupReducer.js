@@ -1,3 +1,5 @@
+const {Writable} = require('stream');
+
 Function.prototype.method = function(name, func) {
     this.prototype[name] = func;
     return this;
@@ -10,15 +12,15 @@ function GroupReducer(reduce_fn, group_fn, init_fn) {
     this.group_fn = group_fn;
 }
 
-GroupReducer.method('add', function (v) {
-    let k = this.group_fn(v);
+GroupReducer.method('push', function (v) {
+    const k = this.group_fn(v);
     let p = this.container.has(k) ? this.container.get(k) : this.init_fn(v);
     this.container.set(k, this.reduce_fn(p, v));
 });
 
-GroupReducer.method('push', function(v) {
-    this.add(v);
-})
+GroupReducer.method('add', function(v) {
+    this.push(v);
+});
 
 GroupReducer.method('values', function() {
     return this.container.values();
@@ -40,10 +42,22 @@ GroupReducer.method('groups', function() {
     return g;
 });
 
-Array.prototype.groupReduce = function(reduce_fn, group_fn, init_fn) {
+GroupReducer.method('stream', function() {
+    let that = this;
+    return new Writable({
+        objectMode: true,
+
+        write(value, encoding, cb) {
+            that.push(value);
+            cb();
+        }
+    });
+});
+
+Array.method('groupReduce', function(reduce_fn, group_fn, init_fn) {
     let reducer = new GroupReducer(reduce_fn, group_fn, init_fn);
     this.forEach(v => reducer.push(v));
-    return reducer;
-}
+    return reducer.groups();
+});
 
 module.exports = GroupReducer;

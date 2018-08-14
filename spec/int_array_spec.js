@@ -3,12 +3,11 @@ const GroupReducer = require('../GroupReducer');
 describe('', () => {
     it('', () => {
         let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-        let reducer = arr.groupReduce(
+        const groups = arr.groupReduce(
             (p, v) => p.concat(v),
             (v) => v % 2 === 0 ? 'even' : 'odd',
             () => []
         );
-        const groups = reducer.groups();
         expect(groups).toBeDefined();
         expect(Object.keys(groups).length).toBe(2);
         expect(groups.odd.length).toBe(5);
