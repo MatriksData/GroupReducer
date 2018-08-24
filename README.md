@@ -51,10 +51,11 @@ ins .pipe(reducer.stream())
 ```javascript
 new GroupReducer(reduce_fn, group_fn, init_fn)
 ```
+
 As the names implies, all parameters are functions with the following signatures:
-    * **`reduce_fn(prev, current)`**: Takes the previous group value and the current value, returns the reduced group value.
-    * group_fn(current): Takes the current value and returns the group key.
-    * init_fn([current]): Optionally takes the current value, returns the group's initial value.
+* **`reduce_fn(prev, current)`**: Takes the previous group value and the current value, returns the reduced group value.
+* **`group_fn(current)`**: Takes the current value and returns the group key.
+* **`init_fn([current])`**: Optionally takes the current value, returns the group's initial value.
 
 ### .push(value)
 
