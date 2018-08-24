@@ -1,7 +1,7 @@
 {
   "name": "groupreducer",
-  "version": "0.2.0",
-  "description": "Javascript group reducer for streams as well as arrays",
+  "version": "0.5.0",
+  "description": "Javascript group reducer for streams, arrays, and manual pushes",
   "main": "GroupReducer.js",
   "scripts": {
     "test": "jasmine"
@@ -11,6 +11,7 @@
     "url": "git+https://github.com/MatriksData/GroupReducer.git"
   },
   "keywords": [
+    "functional programming",
     "grouping",
     "reduce",
     "stream",
