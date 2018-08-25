@@ -12,9 +12,9 @@ Consider the following simple example.  It groups a 10 element array into odds a
 ```javascript
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const groups = arr.groupReduce(
-    (p, v) => p.concat(v),
-    (v) => v % 2 === 0 ? 'even' : 'odd',
-    () => []
+    (p, v) => p.concat(v),                   // reduce function
+    (v) => v % 2 === 0 ? 'even' : 'odd',     // grouping function
+    () => []                                 // group initialization function
 );
 console.log(groups);   
 // { odd: [ 1, 3, 5, 7, 9 ], even: [ 2, 4, 6, 8, 10 ] }

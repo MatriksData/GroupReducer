@@ -19,9 +19,6 @@ GroupReducer.method('push', function (v) {
 });
 
 GroupReducer.method('add', GroupReducer.prototype.push );
-//GroupReducer.method('add', function(v) {
-//    this.push(v);
-//});
 
 GroupReducer.method('values', function() {
     return this.container.values();

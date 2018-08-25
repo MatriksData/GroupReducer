@@ -1,19 +1,19 @@
 const GroupReducer = require('../GroupReducer');
 const {Readable} = require('stream');
 
-describe('', () => {
-    it('', (done) => {
+describe('Stream reducer', () => {
+    it('consumes a readable stream', (done) => {
         let reducer = new GroupReducer(
             (p, v) => p.concat(v),
             (v) => v % 2 === 0 ? 'even' : 'odd',
             () => []
         );
-        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        let i = 1;
         let ins = new Readable({
             objectMode: true,
-
             read() {
-                this.push(arr.length > 0 ? arr.shift() : null);
+                this.push(i <= 10 ? i : null);
+                i += 1;
             }
         });
         ins .pipe(reducer.stream())
