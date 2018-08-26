@@ -1,6 +1,6 @@
 {
   "name": "groupreducer",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Javascript group reducer for streams, arrays, and manual pushes",
   "main": "GroupReducer.js",
   "scripts": {
