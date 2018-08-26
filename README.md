@@ -1,5 +1,7 @@
 # GroupReducer
 
+[![Build Status](https://travis-ci.org/MatriksData/GroupReducer.svg?branch=master)](https://travis-ci.org/MatriksData/GroupReducer)
+
 Very similar to Array.reduce() function with grouping functionality.  It works with arrays, streams and discrete pushes.  Please check the specs directory out for sample usage scenarios.
 
 Consider the following simple example.  It groups a 10 element array into odds and evens.  
