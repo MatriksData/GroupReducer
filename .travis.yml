@@ -1,8 +1,20 @@
 language: node_js
 node_js:
   - "8"
-  - "6"
-  - "4"
+  - "9"
+  - "10"
 sudo: false
 script:
   - npm test
+before_test:
+  - "npm i -g jasmine"
+env:
+  - TEST=true
+matrix:
+  fast_finish: true
+  include:
+    - node_js: "node"
+      env: PRETEST=true
+    - node_js: "node"
+      env: COVERAGE=true
+
