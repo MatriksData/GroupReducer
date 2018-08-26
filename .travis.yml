@@ -6,7 +6,7 @@ node_js:
 sudo: false
 script:
   - npm test
-before_test:
+before_install:
   - "npm i -g jasmine"
 env:
   - TEST=true
