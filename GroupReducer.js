@@ -36,6 +36,9 @@ GroupReducer.method('groups', function() {
     let g = {}
     for (k of this.container.keys()) {
         g[k] = this.container.get(k);
+        if (g[k].groups != undefined) {
+            g[k] = g[k].groups()
+        }
     }
     return g;
 });
