@@ -42,7 +42,7 @@ console.log(groups);
 
 If you read your data from a readable/transform stream, you do not need to collect the data in an array.   `GroupReducer.stream()` function retuns a writable stream.  So just pipe them as follows.
 
-**Nate:** Streaming funcionaliny is only supported for Node, streaming for brovsers will be implemented at the next version.
+**Note:** Streaming funcionaliny is only supported for Node, streaming for brovsers will be implemented at the next version.
 
 ```javascript
 let reducer = new GroupReducer(
