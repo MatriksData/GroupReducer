@@ -47,19 +47,3 @@ Array.method('groupReduce', function(reduce_fn, group_fn, init_fn) {
     return reducer.groups();
 });
 
-// NODE
-const {Writable} = require('stream');
-
-GroupReducer.method('stream', function() {
-    let that = this;
-    return new Writable({
-        objectMode: true,
-
-        write(value, encoding, cb) {
-            that.push(value);
-            cb();
-        }
-    });
-});
-
-module.exports = GroupReducer;

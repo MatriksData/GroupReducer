@@ -1,6 +1,6 @@
 {
   "name": "groupreducer",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Javascript group reducer for streams, arrays, and manual pushes",
   "main": "GroupReducer.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "stream",
     "array"
   ],
+  "unpkg": "dist/GroupReducer.js",
   "author": "matriks developers",
   "license": "MPL-2.0",
   "bugs": {

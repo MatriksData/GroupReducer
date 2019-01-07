@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+<title>Group Reducer Test</title>
+<meta charset="utf-8">
+</head>
+<body>
+    <ul id="errors"></ul>
+    <script src="../dist/GroupReducer.js"></script>
+    <script type="text/javascript">
+        let errorcount = 0;
+        let casecount = 0;
+        function assert(cond, msg) {
+            casecount += 1;
+            if (!cond) {
+                errorcount += 1;
+                let errors = document.getElementById('errors');
+                let li = document.createElement('li');
+                li.textContent = msg;
+                errors.appendChild(li);
+            }
+        }
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        function arraytest() {
+            const groups = arr.groupReduce(
+                (p, v) => p.concat(v),
+                (v) => v % 2 === 0 ? 'even' : 'odd',
+                () => []
+            );
+            assert(groups !== null && groups !== undefined, 
+                'Groups can not be created by Array.groupReduce');
+            assert( Object.keys(groups).length === 2, 
+                'Improper grouping');
+            assert(groups.odd.length === 5, 'Odds grouping error');
+            assert(groups.even.length === 5, 'Evens grouping error');
+        }
+        function pushtest() {
+            let reducer = new GroupReducer(
+                (p, v) => p.concat(v),
+                (v) => v % 2 === 0 ? 'even' : 'odd',
+                () => []
+            );
+            for (let i = 1; i <= 10; i += 1) {
+                reducer.push(i);
+            }
+            const groups = reducer.groups();
+            assert(groups !== null && groups !== undefined, 
+                'Groups can not be created by Array.groupReduce');
+            assert( Object.keys(groups).length === 2, 
+                'Improper grouping');
+            assert(groups.odd.length === 5, 'Odds grouping error');
+            assert(groups.even.length === 5, 'Evens grouping error');
+        }
+        document.body.onload = function() {
+            arraytest();
+            pushtest();
+
+            let sum = document.createElement('p');
+            sum.textContent = casecount + ' test cases completed with ' + errorcount + ' error(s)';
+            document.body.appendChild(sum);
+        };
+    </script>
+</body>
+</html>
