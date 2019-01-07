@@ -14,9 +14,9 @@ npm install groupreducer
 
 For browser applications, import via CDN:
 
-'''html
+```html
     <script src="<https://unpkg.com/groupreducer@0.6.0'></script>>
-'''
+```
 or use `dist/GroupReducer.js` file directly.
 
 ## Usage
